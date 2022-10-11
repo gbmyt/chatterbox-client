@@ -7,7 +7,24 @@ var Parse = {
   server: `https://app-hrsei-api.herokuapp.com/api/chatterbox/messages/${window.CAMPUS}`,
 
   create: function(message, successCB, errorCB = null) {
-    // TODO: send a request to the Parse API to save the message
+    console.log(message,successCB);
+
+    // Maybe this is where we do our templating?? TBD
+    // Remember to escape user input before appending to DOM
+    // use jQuery selector to get some existing element
+    // Create some element
+    // Append to some existing jQuery element
+
+    $.ajax({
+      //try to change to ES6
+      url: Parse.server,
+      type: 'POST',
+      // data: '',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: successCB,
+      error: errorCB
+    });
   },
 
   readAll: function(successCB, errorCB = null) {

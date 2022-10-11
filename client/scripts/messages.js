@@ -9,5 +9,6 @@ var Messages = {
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
+  // we need to see how the messages interact with the DOM using the escape methods
 
 };
