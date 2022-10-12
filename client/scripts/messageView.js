@@ -12,7 +12,7 @@ var MessageView = {
     <div class="chat">
       <div class="username"><%-username%></div>
       <div><%-text%></div>
-      <div></div>
+      <div><%-roomname%></div>
     </div>
   `)
 };

@@ -80,6 +80,21 @@ describe('chatterbox', function() {
       expect($('#rooms select').children().length).to.equal(1);
     });
 
+    //our added test
+    it('should be able to set messages from Messages._data object', function() {
+      // console.log('PARSE', Parse);
+      Messages.set({
+        username: 'Guillermo',
+        text: 'OK',
+        roomname: 'lobby'
+      });
+      expect(Object.keys(Messages._data).length).to.equal(1);
+    });
+
+    it('should be able to get messages from Messages._data object', function() {
+      var messages = Messages.get('Guillermo');
+      expect(messages[0].text).to.equal('OK');
+    });
   });
 
   describe('events', function() {

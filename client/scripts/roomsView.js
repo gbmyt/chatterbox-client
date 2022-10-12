@@ -19,7 +19,7 @@ var RoomsView = {
     // TODO: Render out a single room.
     var html = `<option value=${roomname}>${roomname}</option>`;
     select.append(html);
-    console.log(select.children());
+    // console.log(select.children());
   },
 
   handleChange: function(event) {
