@@ -19,6 +19,7 @@ var FormView = {
     var message = {};
     message['username'] = App.username;
     message['text'] = $('#message').val();
+    // Add room logic here
 
     Parse.create(message);
     console.log('Click handler complete');
