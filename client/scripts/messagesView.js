@@ -10,38 +10,23 @@ var MessagesView = {
     // when this view loads.
 
     MessagesView.render();
-    // Call MessagesView.render() to render all messages to screen
-    //chats.append(MessagesView.render());
   },
 
-  render: function(chats = MessagesView.$chats) {
+  render: function() {
     // TODO: Render _all_ the messages.
-    // Call MessagesView.renderMessage on each message
-    var messageKey = Object.keys(Messages._data);
     var values = Object.values(Messages._data);
-    var messages = Messages._data;
-    console.log('VALUES', values);
-
-    //this is what we were doing last
-    //template is populating, but we cannot append to the DOM
-    for (var i = 0; i < values.length; i++) {
-      for (var j = 0; j < values[i].length; j++) {
-        console.log('CURRENT MSG', MessagesView.renderMessage(values[i][j]));
-        chats.append(MessagesView.renderMessage(values[i][j]));
-      }
-      // console.log('MESSAGE', messages[index]);
-      // console.log('SATIERNS', MessagesView.renderMessage(messages._data[i]));
-    }
-    console.log('CHATS', chats);
+    console.log(values);
+    values.forEach(messages => {
+      messages.forEach(msg => {
+        MessagesView.renderMessage(msg);
+      });
+    });
   },
 
   renderMessage: function(message) {
     // TODO: Render a single message.
-
-    // Call MessageView.render (uses Underscore templating system)
-    //chats.append(window.MessageView.render(message));
-    // We originall chat.append here, and tests pass but we want to move that logic into initialize or render
-    return window.MessageView.render(message);
+    var $messages = MessageView.render(message);
+    MessagesView.$chats.append($messages);
   },
 
   handleClick: function(event) {
@@ -50,3 +35,55 @@ var MessagesView = {
   }
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ORIGINAL RENDERMESSAGE
+
+// Call MessageView.render (uses Underscore templating system)
+    //chats.append(window.MessageView.render(message));
+    // We originall chat.append here, and tests pass but we want to move that logic into initialize or render
+    // return window.MessageView.render(message);
+
+
+
+// ORIGINAL RENDER
+
+// var messageKey = Object.keys(Messages._data);
+//     var values = Object.values(Messages._data);
+//     var messages = Messages._data;
+//     console.log('VALUES', values);
+
+//     //this is what we were doing last
+//     //template is populating, but we cannot append to the DOM
+//     for (var i = 0; i < values.length; i++) {
+//       for (var j = 0; j < values[i].length; j++) {
+//         console.log('CURRENT MSG', MessagesView.renderMessage(values[i][j]));
+//         chats.append(MessagesView.renderMessage(values[i][j]));
+//       }
+//       // console.log('MESSAGE', messages[index]);
+//       // console.log('SATIERNS', MessagesView.renderMessage(messages._data[i]));
+//     }
+//     console.log('CHATS', chats);
