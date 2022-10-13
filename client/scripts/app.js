@@ -34,6 +34,7 @@ var App = {
       for (var text of data) {
         Messages.set(text);
       }
+      MessagesView.render()
       callback();
     });
   },

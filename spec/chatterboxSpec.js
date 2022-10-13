@@ -81,19 +81,38 @@ describe('chatterbox', function() {
     });
 
     //our added test
-    it('should be able to set messages from Messages._data object', function() {
-      // console.log('PARSE', Parse);
+    it('should be able to set messages to Messages object', function() {
       Messages.set({
         username: 'Guillermo',
         text: 'OK',
         roomname: 'lobby'
       });
-      expect(Object.keys(Messages._data).length).to.equal(1);
+      Messages.set({
+        username: 'Gabby',
+        text: 'New Message',
+        roomname: 'lobby'
+      });
+      expect(Object.keys(Messages._data).length).to.equal(2);
     });
 
-    it('should be able to get messages from Messages._data object', function() {
+    it('should be able to get messages from Messages object', function() {
       var messages = Messages.get('Guillermo');
       expect(messages[0].text).to.equal('OK');
+    });
+
+    // it('should be able to submit new messages to the server', function() {
+    //   var message = {
+    //     username: 'Guillermo',
+    //     text: 'Testing Message Save',
+    //     roomname: ''
+    //   };
+    //   Parse.create(message);
+    //   expect(Parse.readAll[0].text).to.equal('Testing Message Save');
+    // });
+
+    it('.add should add new rooms to Rooms Model', function() {
+      Rooms.add('private chat room');
+      expect(Object.values(Rooms._data)[0]).to.equal('private chat room');
     });
   });
 

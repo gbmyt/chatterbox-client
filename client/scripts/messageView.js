@@ -18,14 +18,27 @@ var MessageView = {
 };
 
 
-// ====================
-// <%-escape%>                  <====== THIS IS WHAT WE WANT
-// ====================
-// Insert the result of an expression, but escape the following characters via _.escape():  & < > " ' /
 
-// Example:
-//     > _.template("Hello <%-user%>!", { user: "<Jane>" })
-//     'Hello &lt;Jane&gt;!'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,6 +51,15 @@ var MessageView = {
 // <%=interpolate%>
 // ====================
 // Insert the result of an expression. The properties of the data object are all available as variables (see property user, above). No escaping happens, values are inserted verbatim.
+
+// ====================
+// <%-escape%>                  <====== THIS IS WHAT WE WANT
+// ====================
+// Insert the result of an expression, but escape the following characters via _.escape():  & < > " ' /
+
+// Example:
+//     > _.template("Hello <%-user%>!", { user: "<Jane>" })
+//     'Hello &lt;Jane&gt;!'
 
 // ====================
 // <%evaluate%>

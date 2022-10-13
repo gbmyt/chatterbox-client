@@ -18,12 +18,6 @@ var Parse = {
       success: successCB,
       error: errorCB
     });
-
-    // console.log(Messages.set({
-    //   username: 'Guillermo',
-    //   text: 'Working?',
-    //   roomname: 'lobby'
-    // }));
   },
 
   readAll: function(successCB, errorCB = null) {
