@@ -20,10 +20,10 @@ var FormView = {
     message['username'] = App.username;
     message['text'] = $('#message').val();
     // Add room logic here
+    // message['roomname'] = $('select').val();
+    // console.log(message['roomname']);
 
     Parse.create(message);
-    console.log('Click handler complete');
-
   },
 
   setStatus: function(active) {

@@ -15,7 +15,7 @@ var MessagesView = {
   render: function() {
     // TODO: Render _all_ the messages.
     var values = Object.values(Messages._data);
-    console.log(values);
+    // console.log(values);
     values.forEach(messages => {
       messages.forEach(msg => {
         MessagesView.renderMessage(msg);
