@@ -22,7 +22,7 @@ var App = {
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
-    setInterval(() => App.fetch(MessagesView.render), 5000);
+    setInterval(() => App.fetch(MessagesView.render), 2000);
   },
 
   fetch: function(callback = ()=>{}) {

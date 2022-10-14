@@ -68,6 +68,7 @@ describe('chatterbox', function() {
     it('should be able to add messages to the DOM', function() {
       var message = {
         username: 'Mel Brooks',
+        message_id: '4',
         text: 'Never underestimate the power of the Schwartz!',
         roomname: 'lobby'
       };
@@ -84,11 +85,13 @@ describe('chatterbox', function() {
     it('should be able to set messages to Messages object', function() {
       Messages.set({
         username: 'Guillermo',
+        message_id: '2',
         text: 'OK',
         roomname: 'lobby'
       });
       Messages.set({
         username: 'Gabby',
+        message_id: '3',
         text: 'New Message',
         roomname: 'lobby'
       });
@@ -123,6 +126,7 @@ describe('chatterbox', function() {
       App.initialize();
       MessagesView.renderMessage({
         username: 'Mel Brooks',
+        message_id: '1',
         text: 'I didn\'t get a harumph outa that guy.!',
         roomname: 'lobby'
       });
