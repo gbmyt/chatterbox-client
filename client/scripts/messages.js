@@ -8,8 +8,6 @@ var Messages = {
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
-
-  // Possible Methods: create, edit, delete, render?, get?
   set: function(message) {
     if (Messages._data[message.username] === undefined) {
       Messages._data[message.username] = [message];
@@ -21,7 +19,6 @@ var Messages = {
 
   get: function(username) {
     return Messages._data[username];
-    // return Object.entries(Messages._data);
   }
 };
 

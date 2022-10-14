@@ -11,12 +11,12 @@ var MessagesView = {
 
     //MessagesView.render();
     MessagesView.$chats.on('click', '.username', MessagesView.handleClick);
+    $('#refresh').click(MessagesView.handleRefresh);
   },
 
   render: function() {
     // TODO: Render _all_ the messages.
     var values = Object.values(Messages._data);
-    // console.log(values);
 
     values.forEach(messages => {
       messages.forEach(msg => {
@@ -41,7 +41,11 @@ var MessagesView = {
     } else {
       $(event.target).css({ 'color': '' });
     }
+  },
 
+  handleRefresh: function (event) {
+    MessagesView.$chats.empty();
+    MessagesView.render();
   }
 
 };
