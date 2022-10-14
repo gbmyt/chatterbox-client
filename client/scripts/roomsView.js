@@ -10,7 +10,8 @@ var RoomsView = {
     // TODO: Perform any work which needs to be done
     // when this view loads.
     RoomsView.render();
-    RoomsView.$button.on('click', RoomsView.handleClick)
+    RoomsView.$button.on('click', RoomsView.handleClick);
+    RoomsView.$select.change(RoomsView.handleChange);
   },
 
   render: function() {
@@ -40,24 +41,30 @@ var RoomsView = {
 
     // event.preventDefault();
     // Only runs on second call to .change()
-    RoomsView.$select.change((e) => {
-      $('body').css({ 'background-color': '#000' });
-      //console.log('======>', e.target.value);
+    $('body').css({ 'background-color': '#000' });
 
-      // filter messages somehow
-      // filter by e.target.value truthy
-      // Messages._data is an object, with keys that have arrays as values
-      var msgs = Object.values(Messages._data);
-      // console.log('Messages', Messages._data);
+    // Messages._data is an object, with keys that have arrays as values
+    var msgs = Object.values(Messages._data);
+    // console.log('Messages', Messages._data);
+    // console.log('This', $('select').val());
 
-      var filtered = msgs.map((messages) => {
-        return messages.filter((msg) => {
-          console.log('Message', msg.roomname === RoomsView.$select.val());
-          return msg.roomname === RoomsView.$select.val();
-        });
+    var filtered = msgs.map((messages) => {
+      return messages.filter((msg) => {
+        console.log('Message', msg.roomname === RoomsView.$select.val());
+        return msg.roomname === $('select').val();
       });
-      console.log('FILTERED', filtered, 'Rooms Select Val', RoomsView.$select.val());
     });
+
+    console.log('FILTERED', filtered, 'Rooms Select Val', RoomsView.$select.val());
+    for (var key of filtered) {
+      console.log(key);
+      for (var i = 0; i < key.length; i++) {
+        if (!Object.keys(key[i]).includes($('select').val())) {
+          MessagesView.renderMessage(key[i]);
+        }
+      }
+
+    }
   },
 
   handleClick: function(event) {
@@ -65,7 +72,7 @@ var RoomsView = {
     console.log('clicked');
     var roomname = prompt('New Room Name:');
     console.log(roomname);
-    Rooms.add(roomname)
+    Rooms.add(roomname);
   }
 
 };
@@ -76,14 +83,29 @@ var RoomsView = {
 
 
 
-// var filtered = msgs.filter(messages => {
-//   // msgs.roomname = room;
+// handleChange: function(event) {
+//   // TODO: Handle a user selecting a different room.
 
-//   for (var msg of messages) {
-//     console.log(msg.roomname === RoomsView.$select.val());
-//     if (msg.roomname === RoomsView.$select.value) {
-//       return msg;
-//     }
-//     //return msg.roomname === RoomsView.$select.val();
-//   }
-// });
+//   // event.preventDefault();
+//   // Only runs on second call to .change()
+//   // RoomsView.$select.change((e) => {
+//   $('body').css({ 'background-color': '#000' });
+//   //console.log('======>', e.target.value);
+
+//   // filter messages somehow
+//   // filter by e.target.value truthy
+//   // Messages._data is an object, with keys that have arrays as values
+//   var msgs = Object.values(Messages._data);
+//   // console.log('Messages', Messages._data);
+
+//   // var filtered = msgs.map((messages) => {
+//   //   return messages.filter((msg) => {
+//   //     console.log('Message', msg.roomname === RoomsView.$select.val());
+//   //     return msg.roomname === RoomsView.$select.val();
+//   //   });
+//   // });
+
+//   // console.log('FILTERED', filtered, 'Rooms Select Val', RoomsView.$select.val());
+
+//   // });
+// },

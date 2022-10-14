@@ -18,11 +18,11 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    RoomsView.render();
+    App.fetch(RoomsView.render);
 
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
-    setInterval(App.fetch, 5000);
+    setInterval(() => App.fetch(MessagesView.render), 5000);
   },
 
   fetch: function(callback = ()=>{}) {
@@ -36,9 +36,6 @@ var App = {
         Rooms.add(message.roomname);
         Messages.set(message);
       }
-      MessagesView.render();
-      // TO-DO: FIX RENDERING ISSUE (renders room names multiple times)
-      RoomsView.render();
       callback();
     });
   },
