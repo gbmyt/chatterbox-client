@@ -19,11 +19,9 @@ var FormView = {
     var message = {};
     message['username'] = App.username;
     message['text'] = $('#message').val();
-    // Add room logic here
-    // message['roomname'] = $('select').val();
-    // console.log(message['roomname']);
-
+    message['roomname'] = $('select').val();
     Parse.create(message);
+    document.getElementById('send').reset();
   },
 
   setStatus: function(active) {

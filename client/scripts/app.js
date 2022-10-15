@@ -28,7 +28,7 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      // console.log('Server Log:', data);
+      console.log('Server Log:', data);
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
@@ -50,3 +50,9 @@ var App = {
     FormView.setStatus(false);
   }
 };
+
+// form doesn't clear on submit
+// we render the same messages multiples times in #chats
+// messages don't sort from newest to oldest
+// If you're in a room that isn't 'all' and you hit refresh, we render "all" messages
+// When App initializes, chats div should render "lobby" messages only
